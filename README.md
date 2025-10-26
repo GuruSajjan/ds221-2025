@@ -4,69 +4,6 @@
 
 * **Posted on 25-08-2025**
 * **Due on 20-09-2025 11:59 PM** (No extension will be granted)
-
-## INSTRUCTIONS
-All problems must be solved using C++ and compile/execute correctly on the [teaching cluster](cluster_usage_instructions.md). You may test and debug on your local machine, but the final evaluation will be done on the cluster. 
-
-All performance numbers given in your report should be on compute nodes of the cluster. Profiling experiments should be run during your assigned timeslot to avoid performance interference. We should be able to reproduce your performance results.
-
-You are required to actively use Copilot to solve the programming part of the problem, to generate the solution code, and to test code. You are responsible for checking the accuracy of the code, including edge cases.
-
-You MUST NOT collaborate with other students or take help from other (non-Copilot) online sources to solve any part of the problem, including code, prompts, algorithms, time/space complexity, etc. You must keep your answers inaccessible to other students.
-
-You are provided a `main.cpp` file which calls helper functions for tasks such as file reading and writing output to a file. By default, this uses the sample input and output provided by us. You can edit the file paths in `main.cpp` if you need to change the input files. You must not change anything else in `main.cpp`. We will run our own test cases using this file, so any modifications beyond the allowed changes could affect your evaluation. You are also not allowed to change the other files used for file operations (`file_writer.h`, `file_reader.h`).
-
-All functions you write should be added to the `user_code.h` file. You must adhere to the function signatures specified in `user_code.h`. You are allowed to add additional helper functions to `user_code.h` if necessary, as long as the main function signatures remain unchanged.
-
-DO NOT PRINT ANYTHING TO THE CONSOLE from code you write in the final submission. Your code will be auto-graded. Any deviation from instructions will cause grading to fail and you will get zero points.
-
-## SUBMISSION INSTRUCTIONS
-
-Please submit a zipped file `iischandle.zip` where you replace `iischandle` with the prefix of your IISc email (e.g., `parveshbarak` if your IISc email is `parveshbarak@iisc.ac.in`). Inside this zip file, you will have a single folder named `iischandle/`, and within this folder include exactly two files:  
-  1. `user_code.h` – This file should contain all of your code.  
-  2. `iischandle.pdf` – This file should include your experimental setup, observations and analysis, plots, and any other required documentation and acknowledgements.  
-
-So the file structure should look like this:  
-```
-iischandle.zip
-|--iischandle\
-   |-- user_code.h
-   |-- iischandle.pdf
-```
-**Any deviation from the specified file or folder names, or failure to follow the instructions for completing the assignment, *will* result in a penalty.**
-
-We will separately share a feedback form on Copilot to be filled *after the deadline*.
-
-**Since the use of Copilot is allowed, please make sure to implement the most efficient algorithm to solve each question.**
-
-
------------------------------------------------------------------------------------------------------------------------
-
-## Report Instructions
-Your report should include at least the following sections (you may add more if needed):
-- Solution Approach
-  - A clear explanation of the algorithm(s) used to solve the problem.
-  - Include step-by-step reasoning behind the chosen method.
-  - Provide diagrams or examples where helpful.
-- Time and Space Complexity Analysis
-  - Analyze best case, worst case, and average case scenarios.
-  - Provide both theoretical analysis and practical justification.
-- Experimental Setup
-  - Describe the setups and different variables you choose for experiments with reasoning
-- Empirical Observations
-  - Report time taken and memory usage of your algorithm based on experimental runs.
-  - Present results in tabular or graphical format for clarity.
-  - Compare empirical results with theoretical expectations.
-  - Discuss scalability (how the algorithm performs as input size increases).
-  - Detailed Analysis with Different Algorithmic Approaches if more than one tried
-    - Provide time and space complexity for each approach.
-    - Justify why you chose the final implementation over the alternatives.
-- Additional Insights (Optional but Recommended)
-  - For example: Mention possible optimizations and trade-offs.
-
-
-
-
 -----------------------------------------------------------------------------------------------------------------------
 
 ## PROBLEM CONTEXT
@@ -80,17 +17,6 @@ You are working as a software engineer for a parcel delivery company. The compan
 You are given a list of parcels, where each parcel is represented by its ID and weight. Some parcels may appear more than once in the list (i.e., duplicate IDs). Two parcels with the same parcel ID but different weights should be considered duplicates.  
 
 Your task is to detect all duplicate parcels and return the minimum weight occurrence of each duplicate parcel in sorted order of ids in the specified output format.  
-
-- Complete the function named **question_one** in the code template.  
-- The function syntax, input format, and output format are described in the `function_syntax.md` file.  
-- Sample input and output for sanity check:  
-  * `sample_tests/question1/input.txt`  
-  * `sample_tests/question1/output.txt`  
-
-#### Grading  
-- 1 mark for code  
-- 1 mark for Copilot prompt  
-- 2 marks for profiling and report  
 
 
 -----------------------------------------------------------------------------------------------------------------------
@@ -122,18 +48,6 @@ To perform this inspection efficiently, the company doesn’t need to physically
 #### Output  
 Return the highest-numbered junction ID (i.e., junction with the largest index in level order) for each query list such that all the items of the list are present on that junction.  
 
-- The function syntax, input format, and output format are described in the `function_syntax.md` file.  
-- Sample input and output for sanity check:  
-  * `sample_tests/question2/input.txt`  
-  * `sample_tests/question2/output.txt`  
-
-#### Grading  
-- 2 marks for code  
-- 1 mark for Copilot prompt  
-- 4 marks for profiling and report  
-
-
-
 -----------------------------------------------------------------------------------------------------------------
 
 
@@ -164,19 +78,9 @@ Complete function **question_three**, and if the two trucks cannot meet due to n
 
 #### Output  
 - The minimum time units after which the two trucks can meet.  
-- Return -1 if no meeting is possible.  
+- Return -1 if no meeting is possible.
 
-#### Additional Information  
-- The function signature, input format, and output format are described in `function_syntax.md`.  
-- Example test files for sanity check:  
-  * `sample_tests/question3/input.txt`  
-  * `sample_tests/question3/output.txt`  
-
-#### Grading  
-- 4 marks for code  
-- 1 marks for Copilot prompt  
-- 4 marks for profiling and report  
-
+-----------------------------------------------------------------------------------------------------------------
 
 # Scalable Systems Assignment - I
 
@@ -234,6 +138,11 @@ The naive approach would store all distinct weights for each id, but this wastes
 - Time complexity grows linearly with number of parcels
 - Space complexity increases with range of ids (more unique ids require more storage)
 
+
+| *Figure 1:Time Complexity vs Number of Parcels* | *Figure 2: Space Complexity vs Number of Parcels* |
+|:-----------------------------:|:-------------------------:|
+| ![Figure 1](Analysis_Plots/Time_Q1.png) | ![Figure 2](Analysis_Plots/Space_Q1.png) |
+
 ---
 
 ## Problem 2: Binary Conveyor Network
@@ -290,6 +199,20 @@ Let:
 - **Parcels per query (q):** 1 to 100 (uniform)
 
 ### Empirical Observations
+| *Figure 3: Time vs Number of Leaf Nodes* | *Figure 4: Space vs Number of Leaf Nodes* |
+|:-----------------------------:|:-------------------------:|
+| ![Figure 3](Analysis_Plots/Time_Q2_L_f_queries.png) | ![Figure 4](Analysis_Plots/Space_Q2_L_f_queries.png) |
+
+
+| *Figure 5: Time vs Number of Queries* | *Figure 6: Space vs Number of Queries* |
+|:-----------------------------:|:-------------------------:|
+| ![Figure 5](Analysis_Plots/Time_Q2_Q_f_leaves.png) | ![Figure 6](Analysis_Plots/Space_Q2_Q_f_leaves.png) |
+
+
+| *Figure 7: Time Complexity Heatmap* | *Figure 8: Space Complexity Heatmap* |
+|:-----------------------------:|:-------------------------:|
+| ![Figure 5](Analysis_Plots/Time_Q2.png) | ![Figure 6](Analysis_Plots/Space_Q2.png) |
+
 - Time complexity increases with leaf nodes and queries
 - Space complexity increases with leaf nodes due to path storage
 - Number of queries affects time but not space complexity
@@ -365,6 +288,23 @@ Let:
 - **Metro cities:** [0.01, 0.1, 0.35] of total nodes
 
 ### Empirical Observations
+
+| *Figure 9: Time Complexity vs Number of Nodes for Different Densities* | 
+|:-----------------------------:|
+| ![Figure 9](Analysis_Plots/Time_Q3.png) | 
+
+| *Figure 10: Space Complexity vs Number of Nodes for Different Densities* | 
+|:-----------------------------:|
+| ![Figure 10](Analysis_Plots/Q3_Space.png) | 
+
+| *Figure 11: Time and Space Complexity vs Number of Edges for Fixed Nodes* | 
+|:-----------------------------:|
+| ![Figure 11](Analysis_Plots/Q3_Edges.png) | 
+
+| *Figure 12: Time and Space Complexity vs Number of Metro Cities for Fixed Nodes* | 
+|:-----------------------------:|
+| ![Figure 12](Analysis_Plots/Q3_Metro.png) | 
+
 - Time and space complexity increase with nodes and edges
 - For fixed nodes, time increases linearly, space increases rapidly with edges
 - Number of metro cities has minimal effect on performance
